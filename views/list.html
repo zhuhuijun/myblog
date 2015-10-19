@@ -1,0 +1,39 @@
+<% include ./include/header.html%>
+<div class="container">
+    <div class="media-list">
+        <%
+        artic.forEach(function(one){
+        %>
+        <li class="media">
+            <div class="media-left">
+
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">
+                    <a href="/articals/detail/<%=one._id%>"><%= one.title%></a>
+                </h4>
+
+                <p class="media-left"><%- one.content%></p>
+            </div>
+            <div class="media-bottom">
+                作者:<%=one.user.username%>
+                发表时间:<%=one.createAt.toLocaleString()%>
+            </div>
+        </li>
+        <%
+        });
+        %>
+    </div>
+    <nav>
+        <ul class="pagination">
+            <%
+            for(var i=1;i<=totalPage;i++){
+            %>
+            <li><a href="/articals/list/<%=i%>/<%=pageSize%>">第<%=i%>页</a></li>
+            <%
+            }
+            %>
+        </ul>
+    </nav>
+</div>
+<% include ./include/footer.html%>
